@@ -1,4 +1,4 @@
 const ChatPage = () => {
-  return <div>ChatPage</div>;
+  return <div className="min-h-screen">ChatPage</div>;
 };
 export default ChatPage;

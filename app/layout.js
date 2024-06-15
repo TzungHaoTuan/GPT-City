@@ -1,5 +1,13 @@
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,8 +19,27 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={inter.className}>
+          <div className="bg-neutral">
+            <Link href="/" className="btn btn-primary absolute left-20 top-12">
+              Home
+            </Link>
+            <div className="absolute right-20 top-12">
+              <SignedOut>
+                <div className="btn btn-primary">
+                  <SignInButton />
+                </div>
+              </SignedOut>
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
+            </div>
+            {children}
+          </div>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
