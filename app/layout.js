@@ -8,6 +8,7 @@ import {
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import ToastProvider from "./provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,7 +37,7 @@ export default function RootLayout({ children }) {
                 <UserButton />
               </SignedIn>
             </div>
-            {children}
+            <ToastProvider>{children}</ToastProvider>
           </div>
         </body>
       </html>

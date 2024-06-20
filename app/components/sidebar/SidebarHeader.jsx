@@ -1,11 +1,20 @@
+"use client";
+
 import { SiOpenaigym } from "react-icons/si";
 import ThemeToggle from "./ThemeToggle";
+import toast from "react-hot-toast";
 
 export const SidebarHeader = () => {
   return (
     <div className="flex items-center">
       <SiOpenaigym className="w-8 h-8 text-secondary" />
       <h2 className="font-bold text-xl text-secondary ml-4">CityGPT</h2>
+      <button
+        className="btn btn-primary"
+        onClick={() => toast.success("success")}
+      >
+        success
+      </button>
       <div className="ml-auto">
         <ThemeToggle />
       </div>
