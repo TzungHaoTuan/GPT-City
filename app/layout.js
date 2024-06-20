@@ -20,9 +20,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" data-theme="dark">
         <body className={inter.className}>
-          <div className="bg-neutral">
+          <div className=" z-10">
             <Link href="/" className="btn btn-primary absolute left-20 top-12">
               Home
             </Link>
