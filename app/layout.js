@@ -21,9 +21,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
-      <html lang="en" data-theme="dark">
+      <html lang="en">
         <body className={inter.className}>
-          <div className=" z-10">
+          {/* <div className=" z-10">
             <Link href="/" className="btn btn-primary absolute left-20 top-12">
               Home
             </Link>
@@ -36,9 +36,9 @@ export default function RootLayout({ children }) {
               <SignedIn>
                 <UserButton />
               </SignedIn>
-            </div>
-            <ToastProvider>{children}</ToastProvider>
-          </div>
+            </div> */}
+          <ToastProvider>{children}</ToastProvider>
+          {/* </div> */}
         </body>
       </html>
     </ClerkProvider>

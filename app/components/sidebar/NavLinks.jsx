@@ -7,7 +7,7 @@ export const NavLinks = () => {
     { href: "/profile", label: "profile" },
   ];
   return (
-    <ul className="menu mt-8 capitalize">
+    <ul className="menu mt-8 capitalize gap-2">
       {links.map(({ href, label }) => (
         <li key={href}>
           <Link href={href}>{label}</Link>
