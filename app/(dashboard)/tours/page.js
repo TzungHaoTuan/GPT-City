@@ -1,4 +1,4 @@
 const ToursPage = () => {
-  return <div>ToursPage</div>;
+  return <></>;
 };
 export default ToursPage;

@@ -11,11 +11,11 @@
   "dependencies": {
     "@clerk/nextjs": "^5.1.5",
     "@prisma/client": "^5.5.2",
-    "@tanstack/react-query": "^5.8.1",
-    "@tanstack/react-query-devtools": "^5.8.1",
+    "@tanstack/react-query": "^5.45.1",
+    "@tanstack/react-query-devtools": "^5.45.1",
     "axios": "^1.6.1",
     "next": "14.2.3",
-    "openai": "^4.14.2",
+    "openai": "^4.52.0",
     "react": "^18",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
+    "@tanstack/eslint-plugin-query": "^5.43.1",
     "daisyui": "^3.9.4",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",

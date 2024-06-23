@@ -1,13 +1,12 @@
 import { UserButton } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
+
 export const MemberProfile = async () => {
   const user = await currentUser();
   return (
-    <div className="flex items-center">
+    <div className="flex items-center gap-4">
       <UserButton afterSignOutUrl="/" />
-      {user && (
-        <div className="ml-4">{user.emailAddresses[0].emailAddress}</div>
-      )}
+      <p>{user.emailAddresses[0].emailAddress}</p>
     </div>
   );
 };
