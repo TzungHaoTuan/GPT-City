@@ -1,13 +1,6 @@
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
 import Providers from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -23,22 +16,7 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
-          {/* <div className=" z-10">
-            <Link href="/" className="btn btn-primary absolute left-20 top-12">
-              Home
-            </Link>
-            <div className="absolute right-20 top-12">
-              <SignedOut>
-                <div className="btn btn-primary">
-                  <SignInButton />
-                </div>
-              </SignedOut>
-              <SignedIn>
-                <UserButton />
-              </SignedIn>
-            </div> */}
           <Providers>{children}</Providers>
-          {/* </div> */}
         </body>
       </html>
     </ClerkProvider>

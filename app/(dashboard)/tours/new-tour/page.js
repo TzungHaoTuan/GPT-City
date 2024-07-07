@@ -4,6 +4,7 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 import NewTour from "@/app/components/tour/NewTour";
+
 const NewTourPage = () => {
   const queryClient = new QueryClient();
   return (
