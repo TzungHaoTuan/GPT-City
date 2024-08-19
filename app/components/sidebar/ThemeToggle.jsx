@@ -28,7 +28,7 @@ const ThemeToggle = () => {
       onClick={toggleTheme}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="btn btn-outline btn-md text-accent"
+      className="btn btn-outline btn-sm h-10 text-accent"
     >
       {theme === themes.light ? (
         isThemeHover ? (

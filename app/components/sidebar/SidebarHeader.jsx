@@ -9,15 +9,9 @@ export const SidebarHeader = () => {
   return (
     <div className="flex items-center">
       <Link href="/">
-        <SiOpenaigym className="w-8 h-8 text-secondary" />
+        <SiOpenaigym className="w-8 h-8 text-accent" />
       </Link>
-      <h2 className="font-bold text-xl text-secondary ml-4">CityGPT</h2>
-      <button
-        className="btn btn-primary btn-xs text-xs"
-        onClick={() => toast.success("success")}
-      >
-        success
-      </button>
+      <h2 className="font-bold text-xl text-accent ml-4">CityGPT</h2>
       <div className="ml-auto">
         <ThemeToggle />
       </div>
