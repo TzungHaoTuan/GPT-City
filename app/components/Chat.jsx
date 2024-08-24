@@ -57,8 +57,8 @@ const Chat = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-6rem)] grid grid-rows-[1fr,auto]">
-      <div className="min-h-full">
+    <div className="flex flex-col h-[calc(100vh-96px)]">
+      <div className="flex-grow overflow-y-auto">
         {messages.map(({ role, content }, index) => {
           const avatar =
             role === "user" ? (
@@ -66,12 +66,15 @@ const Chat = () => {
             ) : (
               <SiOpenaigym className="w-4 h-4 mt-5" />
             );
-          const bgColor = role === "user" ? "bg-neutral-800" : "bg-neutral-900";
+          const bgColor =
+            role === "user"
+              ? "bg-neutral-800"
+              : "bg-neutral-content border border-secondary";
           return (
             <div key={index} className="flex items-start gap-4 mt-4">
               <span>{avatar}</span>
-              <div className={`${bgColor} p-4 rounded-lg max-w-2xl`}>
-                <p className="">{content}</p>
+              <div className={`${bgColor} p-4 rounded-lg max-w-3xl`}>
+                <p className="whitespace-pre-line">{content}</p>
               </div>
             </div>
           );
@@ -85,7 +88,7 @@ const Chat = () => {
           </div>
         )}
       </div>
-      <form onSubmit={handleSubmit} className="max-w-3xl">
+      <form onSubmit={handleSubmit} className="max-w-3xl ml-8">
         <div className="join w-full">
           <input
             type="text"
@@ -94,8 +97,11 @@ const Chat = () => {
             value={newMessage}
             onChange={handleNewMessage}
           />
-          <button className="join-item btn btn-secondary" disabled={isPending}>
-            {isPending ? "please wait..." : "ask question"}
+          <button
+            className="join-item btn btn-secondary normal-case"
+            disabled={isPending}
+          >
+            {isPending ? "please wait..." : "Ask question"}
           </button>
         </div>
       </form>

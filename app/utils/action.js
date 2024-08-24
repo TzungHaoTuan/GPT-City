@@ -14,7 +14,7 @@ export const generateChatResponse = async (chatMessages) => {
         ...chatMessages,
       ],
       temperature: 0,
-      max_tokens: 100,
+      max_tokens: 200,
     });
     return {
       message: response.choices[0].message,
