@@ -7,11 +7,15 @@ module.exports = {
   ],
   theme: {
     extend: {
-      //   backgroundImage: {
-      //     "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-      //     "gradient-conic":
-      //       "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      //   },
+      animation: {
+        fade: "spin 1.2s linear infinite, fade 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+      },
+      keyframes: {
+        fade: {
+          "0%, 100%": { opacity: 0 },
+          "50%": { opacity: 1 },
+        },
+      },
     },
   },
   daisyui: {

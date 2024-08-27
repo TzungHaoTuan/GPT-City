@@ -11,6 +11,9 @@ import {
 import TourInfo from "./TourInfo";
 import toast from "react-hot-toast";
 import { useAuth } from "@clerk/nextjs";
+import { SiOpenaigym } from "react-icons/si";
+import Image from "next/image";
+import map from "@/public/map.jpg";
 
 const NewTour = () => {
   const queryClient = useQueryClient();
@@ -51,34 +54,59 @@ const NewTour = () => {
     mutate(destination);
   };
 
-  if (isPending) {
-    return <span className="loading loading-lg"></span>;
-  }
+  // if (isPending) {
+  //   return <span className="loading loading-lg"></span>;
+  // }
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="max-w-2xl mt-8">
+      <form onSubmit={handleSubmit} className="max-w-2xl ml-8">
         <div className="join w-full">
           <input
             type="text"
-            className="input input-bordered join-item w-full"
+            className="input input-bordered border-secondary join-item w-full"
             placeholder="city"
             name="city"
             required
+            disabled={isPending}
           />
           <input
             type="text"
-            className="input input-bordered join-item w-full"
+            className="input input-bordered border-secondary join-item w-full"
             placeholder="country"
             name="country"
             required
+            disabled={isPending}
           />
-          <button className="btn btn-primary join-item" type="submit">
-            generate tour
+          <button
+            className="btn btn-secondary join-item normal-case"
+            type="submit"
+            disabled={isPending}
+          >
+            {isPending ? "please wait..." : "Generate tour"}
           </button>
         </div>
       </form>
-      <div className="mt-16">{tour ? <TourInfo tour={tour} /> : null}</div>
+      <div className="mt-16 ml-8 max-w-2xl bg-">
+        {tour ? (
+          <TourInfo tour={tour} />
+        ) : (
+          <div className="h-96 w-full relative">
+            <Image
+              src={map}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover grayscale brightness-50 contrast-200 opacity-50 drop-shadow"
+              alt="map"
+            />
+            {isPending ? (
+              <div className="animate-fade h-full">
+                <SiOpenaigym className="w-12 h-12 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-accent" />
+              </div>
+            ) : null}
+          </div>
+        )}
+      </div>
     </>
   );
 };

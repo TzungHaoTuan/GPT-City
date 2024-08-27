@@ -1,13 +1,15 @@
+import Stop from "./Stop";
+
 const TourInfo = ({ tour }) => {
   const { title, description, stops } = tour;
   return (
     <div className="max-w-2xl">
-      <h1 className="text-4xl font-semibold">{title}</h1>
-      <h2 className="text-lg mt-4">{description}</h2>
-      <ul className="flex flex-col gap-4 mt-6">
-        {stops.map((stop) => (
-          <li key={stop} className="p-4 bg-base-200 rounded">
-            <p>{stop}</p>
+      <h1 className="text-5xl font-semibold text-primary">{title}</h1>
+      <h2 className="text-lg mt-8">{description}</h2>
+      <ul className="flex flex-col mt-8">
+        {stops.map((stop, index) => (
+          <li key={stop.name}>
+            <Stop stop={stop} isLast={index === stops.length - 1} />
           </li>
         ))}
       </ul>

@@ -27,17 +27,21 @@ export const generateChatResponse = async (chatMessages) => {
 export const generateTourResponse = async ({ city, country }) => {
   const query = `Find a exact ${city} in this exact ${country}.
 If ${city} and ${country} exist, create a list of things families can do in this ${city},${country}. 
-Once you have a list, create a one-day tour. Response should be  in the following JSON format: 
+Once you have a list, create a one-day tour from morning to night. Response should be in the following JSON format: 
 {
   "tour": {
     "city": "${city}",
     "country": "${country}",
     "title": "title of the tour",
     "description": "short description of the city and tour",
-    "stops": [" stop name", "stop name","stop name"]
+    "stops": [{
+      "name": "stop name",
+      "time": "what time to be there",
+      "description": "short description of features of this stop"
+    }]
   }
 }
-"stops" property should include only three stops.
+"stops" property should include three to five stops.
 If you can't find info on exact ${city}, or ${city} does not exist, or it's population is less than 1, or it is not located in the following ${country},   return { "tour": null }, with no additional characters.`;
   try {
     const response = await openai.chat.completions.create({
