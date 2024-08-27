@@ -5,7 +5,7 @@ const TourCard = ({ tour }) => {
   return (
     <Link
       href={`/tours/${id}`}
-      className="card card-compact rounded-xl bg-base-200"
+      className="card card-compact rounded-xl bg-secondary hover:bg-primary hover:text-neutral-content"
     >
       <div className="card-body items-center text-center">
         <h2 className="card-title text-center capitalize">
