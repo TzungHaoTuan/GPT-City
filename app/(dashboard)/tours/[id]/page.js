@@ -17,9 +17,12 @@ const SingleTourPage = async ({ params }) => {
   const { images, photo, blurHash } = await searchUnsplashPhoto(url);
 
   return (
-    <div>
-      <Link href="/tours" className="btn btn-secondary mb-12">
-        back to tours
+    <div className="px-8 relative">
+      <Link
+        href="/tours"
+        className="btn btn-secondary absolute top-0 right-8 normal-case"
+      >
+        Back to tours
       </Link>
       {images.length !== 0 && photo && blurHash ? (
         <CustomImage title={tour.title} photo={photo} hash={blurHash} />
