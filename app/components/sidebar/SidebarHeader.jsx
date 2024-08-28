@@ -8,9 +8,7 @@ import toast from "react-hot-toast";
 export const SidebarHeader = () => {
   return (
     <div className="flex items-center">
-      <Link href="/">
-        <SiOpenaigym className="w-8 h-8 text-accent" />
-      </Link>
+      <SiOpenaigym className="w-8 h-8 text-accent" />
       <h2 className="font-bold text-xl text-accent ml-4">CityGPT</h2>
       <div className="ml-auto">
         <ThemeToggle />
