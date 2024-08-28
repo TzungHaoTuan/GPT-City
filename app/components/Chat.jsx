@@ -57,23 +57,23 @@ const Chat = () => {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-96px)]">
+    <div className="flex flex-col h-screen px-16 py-12 pb-24 relative">
       <div className="flex-grow overflow-y-auto">
         {messages.map(({ role, content }, index) => {
           const avatar =
             role === "user" ? (
               <FaUser className="w-4 h-4 mt-5" />
             ) : (
-              <SiOpenaigym className="w-4 h-4 mt-5" />
+              <SiOpenaigym className="w-4 h-4 mt-5 text-accent" />
             );
           const bgColor =
             role === "user"
               ? "bg-neutral-800"
               : "bg-neutral-content border border-secondary";
           return (
-            <div key={index} className="flex items-start gap-4 mt-4">
+            <div key={index} className="flex items-start gap-4 mb-4">
               <span>{avatar}</span>
-              <div className={`${bgColor} p-4 rounded-lg max-w-3xl`}>
+              <div className={`${bgColor} p-4 rounded-lg`}>
                 <p className="whitespace-pre-line">{content}</p>
               </div>
             </div>
@@ -81,14 +81,17 @@ const Chat = () => {
         })}
         {isPending && messages.length % 2 !== 0 && (
           <div className="flex items-start gap-4 mt-4">
-            <SiOpenaigym className="w-4 h-4 mt-5" />
-            <div className="flex justify-center items-center bg-neutral-900 p-4 rounded-lg max-w-2xl">
-              <span className="loading loading-dots loading-md" />
+            <SiOpenaigym className="w-4 h-4 mt-5 text-accent" />
+            <div className="flex justify-center items-center bg-neutral-content border border-secondary p-4 rounded-lg max-w-2xl">
+              <span className="loading loading-dots loading-md text-accent" />
             </div>
           </div>
         )}
       </div>
-      <form onSubmit={handleSubmit} className="max-w-3xl ml-8">
+      <form
+        onSubmit={handleSubmit}
+        className="absolute bottom-12 w-[calc(100%-128px)]"
+      >
         <div className="join w-full">
           <input
             type="text"

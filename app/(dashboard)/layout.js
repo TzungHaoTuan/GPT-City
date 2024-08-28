@@ -3,16 +3,18 @@ import { FaBarsStaggered } from "react-icons/fa6";
 
 const DashboardLayout = ({ children }) => {
   return (
-    <div className="drawer drawer-open">
+    <div className="drawer xl:drawer-open">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         <label
           htmlFor="my-drawer"
-          className="drawer-button lg:hidden fixed top-6 right-6"
+          className="drawer-button fixed top-12 right-16 z-10"
         >
-          <FaBarsStaggered className="w-8 h-8 text-primary" />
+          <div className="btn border border-secondary hover:border-accent hover:bg-secondary xl:hidden hover:cursor-pointer">
+            <FaBarsStaggered className="w-4 h-4 text-accent drop-shadow" />
+          </div>
         </label>
-        <div className="px-8 py-12 min-h-screen">{children}</div>
+        <div className="min-h-screen">{children}</div>
       </div>
       <div className="drawer-side">
         <label

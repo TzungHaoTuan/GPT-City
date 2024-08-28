@@ -19,21 +19,21 @@ const Tours = () => {
   }, [searchValue]);
 
   return (
-    <div className="px-8">
+    <div className="min-h-screen px-16 py-12">
       <div className="relative">
         <CiSearch className="absolute top-1/2 -translate-y-1/2 left-4 w-6 h-6" />
         <input
           ref={inputRef}
           type="text"
           placeholder="Search city or country"
-          className="input input-bordered border-secondary px-12 py-2  w-full"
+          className="input input-bordered border-secondary pl-12 py-2 w-2/3 lg:w-full"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
           required
         />
       </div>
       {isPending ? (
-        <span className="loading"></span>
+        <span className="loading mt-8"></span>
       ) : (
         <ToursList data={data} />
       )}

@@ -6,11 +6,13 @@ const ProfilePage = async () => {
   const { userId } = auth();
   const currentTokens = await fetchUserTokensById(userId);
   return (
-    <div>
-      <h2 className="mb-8 ml-8 text-xl font-bold">
-        Token Amount : {currentTokens}
-      </h2>
-      <UserProfile routing="hash" />
+    <div className="pt-12 pb-12 flex flex-col items-center">
+      <div>
+        <h2 className="text-lg font-semibold mb-8">
+          Token Amount : {currentTokens}
+        </h2>
+        <UserProfile path="/profile" />
+      </div>
     </div>
   );
 };

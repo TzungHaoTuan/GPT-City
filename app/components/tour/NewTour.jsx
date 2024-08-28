@@ -59,9 +59,9 @@ const NewTour = () => {
   // }
 
   return (
-    <>
-      <form onSubmit={handleSubmit} className="max-w-2xl ml-8">
-        <div className="join w-full">
+    <div className="relative min-h-screen px-16 py-12">
+      <form onSubmit={handleSubmit} className="max-w-2xl">
+        <div className="join join-vertical lg:join-horizontal w-3/4 lg:w-full">
           <input
             type="text"
             className="input input-bordered border-secondary join-item w-full"
@@ -87,27 +87,22 @@ const NewTour = () => {
           </button>
         </div>
       </form>
-      <div className="mt-16 ml-8 max-w-2xl bg-">
+      <div className="mt-16">
         {tour ? (
           <TourInfo tour={tour} />
         ) : (
-          <div className="h-96 w-full relative">
-            <Image
-              src={map}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover grayscale brightness-50 contrast-200 opacity-50 drop-shadow"
-              alt="map"
-            />
+          <>
             {isPending ? (
-              <div className="animate-fade h-full">
-                <SiOpenaigym className="w-12 h-12 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-accent" />
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                <div className="animate-fade">
+                  <SiOpenaigym className="w-12 h-12 text-accent" />
+                </div>
               </div>
             ) : null}
-          </div>
+          </>
         )}
       </div>
-    </>
+    </div>
   );
 };
 export default NewTour;
