@@ -26,7 +26,7 @@ const Tours = () => {
           ref={inputRef}
           type="text"
           placeholder="Search city or country"
-          className="input input-bordered border-secondary pl-12 py-2 w-2/3 lg:w-full"
+          className="input input-bordered border-secondary pl-12 py-2 w-2/3 xl:w-full"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
           required

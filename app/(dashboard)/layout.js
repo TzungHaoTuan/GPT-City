@@ -10,7 +10,7 @@ const DashboardLayout = ({ children }) => {
           htmlFor="my-drawer"
           className="drawer-button fixed top-12 right-16 z-10"
         >
-          <div className="btn border border-secondary hover:border-accent hover:bg-secondary xl:hidden hover:cursor-pointer">
+          <div className="btn border border-secondary hover:border-accent bg-base-100 hover:bg-neutral xl:hidden hover:cursor-pointer">
             <FaBarsStaggered className="w-4 h-4 text-accent drop-shadow" />
           </div>
         </label>

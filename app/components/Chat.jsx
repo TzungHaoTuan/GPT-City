@@ -68,7 +68,7 @@ const Chat = () => {
             );
           const bgColor =
             role === "user"
-              ? "bg-neutral-800"
+              ? "border-[0.1px] border-neutral-500"
               : "bg-neutral-content border border-secondary";
           return (
             <div key={index} className="flex items-start gap-4 mb-4">
@@ -95,7 +95,7 @@ const Chat = () => {
         <div className="join w-full">
           <input
             type="text"
-            className="join-item input input-bordered w-full"
+            className="join-item input input-bordered border-secondary w-full"
             placeholder="What you want to know?"
             value={newMessage}
             onChange={handleNewMessage}
