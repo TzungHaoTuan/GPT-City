@@ -4,13 +4,15 @@ import ToursList from "./ToursList";
 import { useQuery } from "@tanstack/react-query";
 import { useState, useRef, useEffect } from "react";
 import { CiSearch } from "react-icons/ci";
+import { useAuth } from "@clerk/nextjs";
 
 const Tours = () => {
   const [searchValue, setSearchValue] = useState("");
   const inputRef = useRef(null);
+  const { userId } = useAuth();
   const { data, isPending } = useQuery({
     queryKey: ["tours", searchValue],
-    queryFn: () => getAllTours(searchValue),
+    queryFn: () => getAllTours(userId, searchValue),
   });
   useEffect(() => {
     if (searchValue) {

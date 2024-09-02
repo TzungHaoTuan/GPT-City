@@ -18,6 +18,7 @@ import map from "@/public/map.jpg";
 const NewTour = () => {
   const queryClient = useQueryClient();
   const { userId } = useAuth();
+
   const {
     mutate,
     isPending,
@@ -40,7 +41,7 @@ const NewTour = () => {
         return null;
       }
 
-      await createNewTour(newTour.tour);
+      await createNewTour({ userId: userId, ...newTour.tour });
       queryClient.invalidateQueries({ queryKey: ["tours"] });
       const newTokens = await subtractTokens(userId, newTour.tokens);
       toast.success(`${newTokens} tokens remaining...`);

@@ -18,6 +18,7 @@ model tour {
   id          String   @id @default(uuid())
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  userId      String
   city        String
   country     String
   title       String

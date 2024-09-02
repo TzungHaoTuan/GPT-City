@@ -5,13 +5,15 @@ import {
   HydrationBoundary,
   QueryClient,
 } from "@tanstack/react-query";
+import { auth } from "@clerk/nextjs/server";
 
 const ToursPage = async () => {
+  const { userId } = auth();
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
     queryKey: ["tours", ""],
-    queryFn: () => getAllTours(),
+    queryFn: () => getAllTours(userId, ""),
   });
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

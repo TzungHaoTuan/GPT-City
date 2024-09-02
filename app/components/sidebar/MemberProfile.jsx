@@ -6,10 +6,11 @@ export const MemberProfile = async () => {
   const user = await currentUser();
   const { userId } = auth();
   await fetchOrGenerateUserTokens(userId);
+  console.log(user);
   return (
     <div className="flex items-center gap-4">
       <UserButton />
-      <p>{user.emailAddresses[0].emailAddress}</p>
+      <p>{user.username}</p>
     </div>
   );
 };
