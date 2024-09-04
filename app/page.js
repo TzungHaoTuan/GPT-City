@@ -6,6 +6,7 @@ import { SiOpenaigym } from "react-icons/si";
 
 export default function Home() {
   const { userId } = auth();
+  console.log("useId:" + userId);
   if (userId) {
     redirect("/tours/new-tour");
   }
