@@ -1,4 +1,4 @@
-import { MemberProfile } from "./MemberProfile";
+// import { MemberProfile } from "./MemberProfile";
 import { NavLinks } from "./NavLinks";
 import { SidebarHeader } from "./SidebarHeader";
 
@@ -11,9 +11,7 @@ export const Sidebar = () => {
       <li>
         <NavLinks />
       </li>
-      <li>
-        <MemberProfile />
-      </li>
+      <li>{/* <MemberProfile /> */}</li>
     </ul>
   );
 };
