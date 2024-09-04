@@ -4,7 +4,7 @@ import { fetchUserTokensById } from "@/app/utils/action";
 
 const ProfilePage = async () => {
   const { userId } = auth();
-  if (!userId) return;
+  // if (!userId) return;
   const currentTokens = await fetchUserTokensById(userId);
   return (
     <div className="pt-12 pb-12 flex flex-col items-center">
