@@ -1,7 +1,14 @@
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
+
 import Link from "next/link";
 import { SiOpenaigym } from "react-icons/si";
 
 export default function Home() {
+  const { userId } = auth();
+  if (userId) {
+    redirect("/tours/new-tour");
+  }
   return (
     <div className="bg-primary bg-opacity-25">
       <div className="hero min-h-screen bg-gradient-to-br from-neutral text-white">
@@ -14,7 +21,10 @@ export default function Home() {
             Welcome to CityGPT, your ultimate source for comprehensive and
             up-to-date city information powered by artificial intelligence.
           </p>
-          <Link href="/chat" className="btn btn-secondary border border-accent">
+          <Link
+            href="/sign-in"
+            className="btn btn-secondary border border-accent"
+          >
             Get Started
           </Link>
         </div>
