@@ -12,8 +12,6 @@ import TourInfo from "./TourInfo";
 import toast from "react-hot-toast";
 import { useAuth } from "@clerk/nextjs";
 import { SiOpenaigym } from "react-icons/si";
-import Image from "next/image";
-import map from "@/public/map.jpg";
 
 const NewTour = () => {
   const queryClient = useQueryClient();
@@ -25,7 +23,7 @@ const NewTour = () => {
     data: tour,
   } = useMutation({
     mutationFn: async (destination) => {
-      const existingTour = await getExistingTour(destination);
+      const existingTour = await getExistingTour({ userId, ...destination });
       if (existingTour) return existingTour;
 
       const currentTokens = await fetchUserTokensById(userId);
@@ -48,16 +46,13 @@ const NewTour = () => {
       return newTour.tour;
     },
   });
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const destination = Object.fromEntries(formData.entries());
     mutate(destination);
   };
-
-  // if (isPending) {
-  //   return <span className="loading loading-lg"></span>;
-  // }
 
   return (
     <div className="relative min-h-screen px-16 py-12">
