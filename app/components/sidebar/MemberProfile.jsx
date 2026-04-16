@@ -3,7 +3,7 @@ import { auth } from "@clerk/nextjs/server";
 import { fetchOrGenerateUserTokens } from "@/app/utils/action";
 
 export const MemberProfile = async () => {
-  const { userId } = auth();
+  const { userId } = await auth();
   await fetchOrGenerateUserTokens(userId);
   return (
     <div className="flex items-center gap-4">
