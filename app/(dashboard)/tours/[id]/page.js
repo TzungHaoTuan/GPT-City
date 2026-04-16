@@ -5,7 +5,7 @@ import Link from "next/link";
 import CustomImage from "@/app/components/CustomImage";
 
 const SingleTourPage = async ({ params }) => {
-  const { id } = params;
+  const { id } = await params;
   const tour = await getSingleTour(id);
 
   if (!tour) {

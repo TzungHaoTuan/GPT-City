@@ -3,7 +3,7 @@ import { auth } from "@clerk/nextjs/server";
 import { fetchUserTokensById } from "@/app/utils/action";
 
 const ProfilePage = async () => {
-  const { userId } = auth();
+  const { userId } = await auth();
   const currentTokens = await fetchUserTokensById(userId);
   return (
     <div className="pt-12 pb-12 flex flex-col items-center">
