@@ -4,7 +4,7 @@ import { fetchOrGenerateUserTokens } from "@/app/utils/action";
 
 export const MemberProfile = async () => {
   const { userId } = await auth();
-  await fetchOrGenerateUserTokens(userId);
+  await fetchOrGenerateUserTokens(userId!);
   return (
     <div className="flex items-center gap-4">
       <UserButton />

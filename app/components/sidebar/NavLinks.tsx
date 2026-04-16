@@ -1,6 +1,12 @@
 import Link from "next/link";
+
+type NavLink = {
+  href: string;
+  label: string;
+};
+
 export const NavLinks = () => {
-  const links = [
+  const links: NavLink[] = [
     { href: "/chat", label: "chat" },
     { href: "/tours", label: "tours" },
     { href: "/tours/new-tour", label: "new tour" },

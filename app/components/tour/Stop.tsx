@@ -1,6 +1,12 @@
 import { IoIosArrowDown } from "react-icons/io";
+import type { TourStop } from "@/app/types";
 
-const Stop = ({ stop, isLast }) => {
+type StopProps = {
+  stop: TourStop;
+  isLast: boolean;
+};
+
+const Stop = ({ stop, isLast }: StopProps) => {
   const { name, time, description } = stop;
   return (
     <>

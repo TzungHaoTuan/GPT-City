@@ -2,16 +2,18 @@
 import { useState } from "react";
 import { BsMoonFill, BsSunFill } from "react-icons/bs";
 
+type Theme = "light" | "dark";
+
 const ThemeToggle = () => {
-  const themes = {
+  const themes: Record<Theme, Theme> = {
     light: "light",
     dark: "dark",
   };
-  const [theme, setTheme] = useState(themes.dark);
+  const [theme, setTheme] = useState<Theme>(themes.dark);
   const [isThemeHover, setIsThemeHover] = useState(false);
 
   const toggleTheme = () => {
-    const currentTheme = theme === themes.light ? themes.dark : themes.light;
+    const currentTheme: Theme = theme === themes.light ? themes.dark : themes.light;
     document.documentElement.setAttribute("data-theme", currentTheme);
     setTheme(currentTheme);
   };
