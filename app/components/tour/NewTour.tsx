@@ -12,6 +12,12 @@ import TourInfo from "./TourInfo";
 import toast from "react-hot-toast";
 import { useAuth } from "@clerk/nextjs";
 import { SiOpenaigym } from "react-icons/si";
+import type { TourData } from "@/app/types";
+
+type Destination = {
+  city: string;
+  country: string;
+};
 
 const NewTour = () => {
   const queryClient = useQueryClient();
@@ -21,14 +27,14 @@ const NewTour = () => {
     mutate,
     isPending,
     data: tour,
-  } = useMutation({
+  } = useMutation<TourData | null | undefined, Error, Destination>({
     mutationFn: async (destination) => {
-      const existingTour = await getExistingTour({ userId, ...destination });
-      if (existingTour) return existingTour;
+      const existingTour = await getExistingTour({ userId: userId!, ...destination });
+      if (existingTour) return existingTour as unknown as TourData;
 
-      const currentTokens = await fetchUserTokensById(userId);
+      const currentTokens = await fetchUserTokensById(userId!);
 
-      if (currentTokens < 300) {
+      if ((currentTokens ?? 0) < 300) {
         toast.error("Token balance too low....");
         return;
       }
@@ -39,18 +45,18 @@ const NewTour = () => {
         return null;
       }
 
-      await createNewTour({ userId: userId, ...newTour.tour });
+      await createNewTour({ userId: userId!, ...newTour.tour });
       queryClient.invalidateQueries({ queryKey: ["tours"] });
-      const newTokens = await subtractTokens(userId, newTour.tokens);
+      const newTokens = await subtractTokens(userId!, newTour.tokens);
       toast.success(`${newTokens} tokens remaining...`);
       return newTour.tour;
     },
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const destination = Object.fromEntries(formData.entries());
+    const destination = Object.fromEntries(formData.entries()) as Destination;
     mutate(destination);
   };
 

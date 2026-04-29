@@ -4,8 +4,8 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import CustomImage from "@/app/components/CustomImage";
 
-const SingleTourPage = async ({ params }) => {
-  const { id } = params;
+const SingleTourPage = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = await params;
   const tour = await getSingleTour(id);
 
   if (!tour) {
@@ -14,7 +14,10 @@ const SingleTourPage = async ({ params }) => {
 
   const url = `https://api.unsplash.com/search/photos/?client_id=${process.env.UNSPLASH_API_ACCESS_KEY}&page=1&query=${tour.city}`;
 
-  const { images, photo, blurHash } = await searchUnsplashPhoto(url);
+  const result = await searchUnsplashPhoto(url);
+  const images = result?.images ?? [];
+  const photo = result?.photo;
+  const blurHash = result?.blurHash;
 
   return (
     <div className="flex flex-col items-center px-16 py-12">

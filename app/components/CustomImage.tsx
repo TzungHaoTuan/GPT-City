@@ -3,7 +3,13 @@ import { BlurhashCanvas } from "react-blurhash";
 import Image from "next/image";
 import { useState } from "react";
 
-const CustomImage = ({ title, photo, hash }) => {
+type CustomImageProps = {
+  title: string;
+  photo: string;
+  hash: string;
+};
+
+const CustomImage = ({ title, photo, hash }: CustomImageProps) => {
   const [loading, setLoading] = useState(true);
   return (
     <div className="w-full">

@@ -8,7 +8,7 @@ import { useAuth } from "@clerk/nextjs";
 
 const Tours = () => {
   const [searchValue, setSearchValue] = useState("");
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const { userId } = useAuth();
   const { data, isPending } = useQuery({
     queryKey: ["tours", searchValue],
@@ -16,7 +16,7 @@ const Tours = () => {
   });
   useEffect(() => {
     if (searchValue) {
-      inputRef.current.focus();
+      inputRef.current?.focus();
     }
   }, [searchValue]);
 
@@ -37,7 +37,7 @@ const Tours = () => {
       {isPending ? (
         <span className="loading mt-8"></span>
       ) : (
-        <ToursList data={data} />
+        <ToursList data={data ?? []} />
       )}
     </div>
   );

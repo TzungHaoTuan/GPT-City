@@ -3,12 +3,12 @@ import { auth } from "@clerk/nextjs/server";
 import { fetchUserTokensById } from "@/app/utils/action";
 
 const ProfilePage = async () => {
-  const { userId } = auth();
-  const currentTokens = await fetchUserTokensById(userId);
+  const { userId } = await auth();
+  const currentTokens = await fetchUserTokensById(userId!);
   return (
-    <div className="pt-12 pb-12 flex flex-col items-center">
+    <div className="flex flex-col items-center pt-12 pb-12">
       <div>
-        <h2 className="text-lg font-semibold mb-8">
+        <h2 className="mb-8 text-lg font-semibold">
           Token Amount : {currentTokens}
         </h2>
         {/* <UserProfile path="/profile" /> */}

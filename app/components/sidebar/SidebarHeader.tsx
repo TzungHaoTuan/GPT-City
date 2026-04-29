@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { SiOpenaigym } from "react-icons/si";
 import ThemeToggle from "./ThemeToggle";
-import toast from "react-hot-toast";
 
 export const SidebarHeader = () => {
   return (

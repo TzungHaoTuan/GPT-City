@@ -1,11 +1,19 @@
 import Link from "next/link";
 
-const TourCard = ({ tour }) => {
+type TourCardProps = {
+  tour: {
+    id: string;
+    city: string;
+    country: string;
+  };
+};
+
+const TourCard = ({ tour }: TourCardProps) => {
   const { city, id, country } = tour;
   return (
     <Link
       href={`/tours/${id}`}
-      className="card card-compact rounded-xl bg-secondary hover:bg-primary 
+      className="card card-compact rounded-xl bg-secondary hover:bg-primary
       text-primary hover:text-secondary"
     >
       <div className="card-body items-center text-center ">

@@ -11,19 +11,20 @@ import toast from "react-hot-toast";
 import { FaUser } from "react-icons/fa";
 import { SiOpenaigym } from "react-icons/si";
 import { useAuth } from "@clerk/nextjs";
+import type { ChatMessage } from "@/app/types";
 
 const Chat = () => {
   const [newMessage, setNewMessage] = useState("");
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
 
   const { userId } = useAuth();
 
   const { mutate, isPending } = useMutation({
     mutationFn: async () => {
       try {
-        const currentTokens = await fetchUserTokensById(userId);
+        const currentTokens = await fetchUserTokensById(userId!);
 
-        if (currentTokens < 100) {
+        if ((currentTokens ?? 0) < 100) {
           toast.error("Token balance too low....");
           return;
         }
@@ -35,23 +36,23 @@ const Chat = () => {
           return;
         }
         setMessages((prev) => [...prev, response.message]);
-        const newTokens = await subtractTokens(userId, response.tokens);
+        const newTokens = await subtractTokens(userId!, response.tokens);
         toast.success(`${newTokens} tokens remaining...`);
       } catch (error) {
-        toast.error(error);
+        toast.error(String(error));
       }
     },
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const query = { role: "user", content: newMessage };
+    const query: ChatMessage = { role: "user", content: newMessage };
     setMessages((prev) => [...prev, query]);
     setNewMessage("");
     mutate();
   };
 
-  const handleNewMessage = (e) => {
+  const handleNewMessage = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setNewMessage(e.target.value);
   };

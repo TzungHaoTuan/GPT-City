@@ -1,7 +1,7 @@
 import { Sidebar } from "@/app/components/sidebar/Sidebar";
 import { FaBarsStaggered } from "react-icons/fa6";
 
-const DashboardLayout = ({ children }) => {
+const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="drawer xl:drawer-open">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />

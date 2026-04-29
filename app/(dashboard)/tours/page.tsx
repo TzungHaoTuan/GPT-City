@@ -8,7 +8,7 @@ import {
 import { auth } from "@clerk/nextjs/server";
 
 const ToursPage = async () => {
-  const { userId } = auth();
+  const { userId } = await auth();
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
