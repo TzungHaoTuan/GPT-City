@@ -1,7 +1,12 @@
 "use server";
 import OpenAI from "openai";
 import prisma from "./db";
-import type { ChatMessage, TourData, TourStop, UnsplashSearchResult } from "@/app/types";
+import type {
+  ChatMessage,
+  TourData,
+  TourStop,
+  UnsplashSearchResult,
+} from "@/app/types";
 import type { Tour } from "@prisma/client";
 
 const openai = new OpenAI({
@@ -9,7 +14,7 @@ const openai = new OpenAI({
 });
 
 export const generateChatResponse = async (
-  chatMessages: ChatMessage[]
+  chatMessages: ChatMessage[],
 ): Promise<{ message: ChatMessage; tokens: number } | null> => {
   try {
     const response = await openai.chat.completions.create({
@@ -102,7 +107,7 @@ export const getExistingTour = async ({
 };
 
 export const createNewTour = async (
-  tour: TourData & { userId: string }
+  tour: TourData & { userId: string },
 ): Promise<Tour> => {
   return prisma.tour.create({
     data: tour,
@@ -111,7 +116,7 @@ export const createNewTour = async (
 
 export const getAllTours = async (
   userId: string | null | undefined,
-  searchTerm: string
+  searchTerm: string,
 ): Promise<Tour[]> => {
   if (!userId) {
     return [];
@@ -160,7 +165,7 @@ export const getSingleTour = async (id: string): Promise<Tour | null> => {
 };
 
 export const searchUnsplashPhoto = async (
-  url: string
+  url: string,
 ): Promise<UnsplashSearchResult | undefined> => {
   try {
     const response = await fetch(url);
@@ -180,7 +185,7 @@ export const searchUnsplashPhoto = async (
 };
 
 export const fetchUserTokensById = async (
-  clerkId: string
+  clerkId: string,
 ): Promise<number | undefined> => {
   const result = await prisma.token.findUnique({
     where: {
@@ -192,7 +197,7 @@ export const fetchUserTokensById = async (
 };
 
 export const generateUserTokensForId = async (
-  clerkId: string
+  clerkId: string,
 ): Promise<number | undefined> => {
   const result = await prisma.token.create({
     data: {
@@ -203,7 +208,7 @@ export const generateUserTokensForId = async (
 };
 
 export const fetchOrGenerateUserTokens = async (
-  clerkId: string
+  clerkId: string,
 ): Promise<number | undefined> => {
   const result = await fetchUserTokensById(clerkId);
   if (result) {
@@ -214,7 +219,7 @@ export const fetchOrGenerateUserTokens = async (
 
 export const subtractTokens = async (
   clerkId: string,
-  tokens: number
+  tokens: number,
 ): Promise<number> => {
   const result = await prisma.token.update({
     where: {
